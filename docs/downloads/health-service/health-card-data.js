@@ -1,0 +1,496 @@
+(function(root){const data={
+  "version": "2026-11-08-cards-v1",
+  "elements": [
+    {
+      "id": "wood",
+      "element": "목",
+      "hanja": "木",
+      "name": "목 · 나무",
+      "image": "assets/element-wood.webp",
+      "symbol": "나무와 성장",
+      "reading": "오늘은 미뤄 둔 작은 일을 시작해 보는 쪽에 행운을 붙여 보세요.",
+      "description": "천간 甲(갑)·乙(을)을 목으로 분류합니다."
+    },
+    {
+      "id": "fire",
+      "element": "화",
+      "hanja": "火",
+      "name": "화 · 불",
+      "image": "assets/element-fire.webp",
+      "symbol": "불과 밝음",
+      "reading": "오늘은 반가운 사람과 이야기를 나누는 시간이 즐거울 수 있어요.",
+      "description": "천간 丙(병)·丁(정)을 화로 분류합니다."
+    },
+    {
+      "id": "earth",
+      "element": "토",
+      "hanja": "土",
+      "name": "토 · 흙",
+      "image": "assets/element-earth.webp",
+      "symbol": "흙과 안정",
+      "reading": "오늘은 익숙한 일 하나를 차분히 마무리하는 쪽을 골라 보세요.",
+      "description": "천간 戊(무)·己(기)를 토로 분류합니다."
+    },
+    {
+      "id": "metal",
+      "element": "금",
+      "hanja": "金",
+      "name": "금 · 금속",
+      "image": "assets/element-metal.webp",
+      "symbol": "금속과 정돈",
+      "reading": "오늘은 주변을 조금 정리하다가 마음에 드는 것을 발견할지도 몰라요.",
+      "description": "천간 庚(경)·辛(신)을 금으로 분류합니다."
+    },
+    {
+      "id": "water",
+      "element": "수",
+      "hanja": "水",
+      "name": "수 · 물",
+      "image": "assets/element-water.webp",
+      "symbol": "물과 흐름",
+      "reading": "오늘은 평소와 다른 방법을 한 번 시도해 보는 재미가 있을 수 있어요.",
+      "description": "천간 壬(임)·癸(계)를 수로 분류합니다."
+    }
+  ],
+  "tarot": [
+    {
+      "id": "meal",
+      "name": "식사 카드",
+      "image": "assets/tarot-meal.webp",
+      "fortune": "오늘은 익숙한 메뉴에서 새로운 선택지를 발견할지도 몰라요.",
+      "topic": "음식·영양정보",
+      "question": "오늘 음식 후보를 보여줘"
+    },
+    {
+      "id": "rest",
+      "name": "휴식 카드",
+      "image": "assets/tarot-rest.webp",
+      "fortune": "오늘은 서두르던 일 사이에 잠깐 쉬어갈 여유가 생길지도 몰라요.",
+      "topic": "수면 정보",
+      "question": "청소년 수면 정보를 알려줘"
+    },
+    {
+      "id": "move",
+      "name": "산책 카드",
+      "image": "assets/tarot-move.webp",
+      "fortune": "오늘은 친구와 잠깐 걸으며 나눈 이야기가 기분 좋은 기억으로 남을지도 몰라요.",
+      "topic": "생활습관 이야기",
+      "question": "이 카드가 내 건강을 알려주는 거야?"
+    },
+    {
+      "id": "water",
+      "name": "물 카드",
+      "image": "assets/tarot-water.webp",
+      "fortune": "오늘은 물 한 잔을 챙기는 작은 선택에 행운을 붙여 보세요.",
+      "topic": "음료 영양정보",
+      "question": "우유 영양정보를 보여줘"
+    }
+  ],
+  "stems": [
+    {
+      "hanja": "甲",
+      "korean": "갑",
+      "polarity": "양",
+      "element": "목"
+    },
+    {
+      "hanja": "乙",
+      "korean": "을",
+      "polarity": "음",
+      "element": "목"
+    },
+    {
+      "hanja": "丙",
+      "korean": "병",
+      "polarity": "양",
+      "element": "화"
+    },
+    {
+      "hanja": "丁",
+      "korean": "정",
+      "polarity": "음",
+      "element": "화"
+    },
+    {
+      "hanja": "戊",
+      "korean": "무",
+      "polarity": "양",
+      "element": "토"
+    },
+    {
+      "hanja": "己",
+      "korean": "기",
+      "polarity": "음",
+      "element": "토"
+    },
+    {
+      "hanja": "庚",
+      "korean": "경",
+      "polarity": "양",
+      "element": "금"
+    },
+    {
+      "hanja": "辛",
+      "korean": "신",
+      "polarity": "음",
+      "element": "금"
+    },
+    {
+      "hanja": "壬",
+      "korean": "임",
+      "polarity": "양",
+      "element": "수"
+    },
+    {
+      "hanja": "癸",
+      "korean": "계",
+      "polarity": "음",
+      "element": "수"
+    }
+  ],
+  "zodiac": [
+    "쥐",
+    "소",
+    "호랑이",
+    "토끼",
+    "용",
+    "뱀",
+    "말",
+    "양",
+    "원숭이",
+    "닭",
+    "개",
+    "돼지"
+  ],
+  "foods": [
+    {
+      "id": "banana",
+      "name": "바나나",
+      "sourceFoodName": "바나나, 생것",
+      "group": "과일",
+      "ingredients": [
+        "바나나"
+      ],
+      "allergens": [],
+      "basis": {
+        "value": 100,
+        "unit": "g"
+      },
+      "nutrients": {
+        "energy": {
+          "value": 77.0,
+          "unit": "kcal"
+        },
+        "carbohydrate": {
+          "value": 20.0,
+          "unit": "g"
+        },
+        "protein": {
+          "value": 1.11,
+          "unit": "g"
+        },
+        "fat": {
+          "value": 0.2,
+          "unit": "g"
+        },
+        "fiber": {
+          "value": 2.2,
+          "unit": "g"
+        },
+        "sodium": {
+          "value": 0.0,
+          "unit": "mg"
+        },
+        "calcium": {
+          "value": 6.0,
+          "unit": "mg"
+        }
+      },
+      "image": "assets/food-banana.webp",
+      "source": {
+        "agency": "식품의약품안전처 K-FIND",
+        "code": "R108-037000001-0000",
+        "url": "https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R108-037000001-0000&searchRegionCd=ZZ&searchMonthCd=AVG",
+        "checked": "2026-11-08"
+      }
+    },
+    {
+      "id": "apple",
+      "name": "사과",
+      "sourceFoodName": "사과, 생것",
+      "group": "과일",
+      "ingredients": [
+        "사과"
+      ],
+      "allergens": [],
+      "basis": {
+        "value": 100,
+        "unit": "g"
+      },
+      "nutrients": {
+        "energy": {
+          "value": 52.0,
+          "unit": "kcal"
+        },
+        "carbohydrate": {
+          "value": 13.96,
+          "unit": "g"
+        },
+        "protein": {
+          "value": 0.26,
+          "unit": "g"
+        },
+        "fat": {
+          "value": 0.07,
+          "unit": "g"
+        },
+        "fiber": {
+          "value": 1.8,
+          "unit": "g"
+        },
+        "sodium": {
+          "value": 0.0,
+          "unit": "mg"
+        },
+        "calcium": {
+          "value": 3.0,
+          "unit": "mg"
+        }
+      },
+      "image": "assets/food-apple.webp",
+      "source": {
+        "agency": "식품의약품안전처 K-FIND",
+        "code": "R108-050000001-0000",
+        "url": "https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R108-050000001-0000&searchRegionCd=ZZ&searchMonthCd=AVG",
+        "checked": "2026-11-08"
+      }
+    },
+    {
+      "id": "tofu",
+      "name": "두부",
+      "sourceFoodName": "두부",
+      "group": "식사",
+      "ingredients": [
+        "대두"
+      ],
+      "allergens": [
+        "대두"
+      ],
+      "basis": {
+        "value": 100,
+        "unit": "g"
+      },
+      "nutrients": {
+        "energy": {
+          "value": 97.0,
+          "unit": "kcal"
+        },
+        "carbohydrate": {
+          "value": 3.75,
+          "unit": "g"
+        },
+        "protein": {
+          "value": 9.62,
+          "unit": "g"
+        },
+        "fat": {
+          "value": 4.63,
+          "unit": "g"
+        },
+        "fiber": {
+          "value": 2.9,
+          "unit": "g"
+        },
+        "sodium": {
+          "value": 1.0,
+          "unit": "mg"
+        },
+        "calcium": {
+          "value": 64.0,
+          "unit": "mg"
+        }
+      },
+      "image": "assets/food-tofu.webp",
+      "source": {
+        "agency": "식품의약품안전처 K-FIND",
+        "code": "R121-043020300-0000",
+        "url": "https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R121-043020300-0000&searchRegionCd=ZZ&searchMonthCd=AVG",
+        "checked": "2026-11-08"
+      }
+    },
+    {
+      "id": "egg",
+      "name": "삶은 달걀",
+      "sourceFoodName": "달걀, 삶은것",
+      "group": "식사",
+      "ingredients": [
+        "달걀"
+      ],
+      "allergens": [
+        "달걀"
+      ],
+      "basis": {
+        "value": 100,
+        "unit": "g"
+      },
+      "nutrients": {
+        "energy": {
+          "value": 145.0,
+          "unit": "kcal"
+        },
+        "carbohydrate": {
+          "value": 1.37,
+          "unit": "g"
+        },
+        "protein": {
+          "value": 13.49,
+          "unit": "g"
+        },
+        "fat": {
+          "value": 8.69,
+          "unit": "g"
+        },
+        "fiber": {
+          "value": 0.0,
+          "unit": "g"
+        },
+        "sodium": {
+          "value": 128.0,
+          "unit": "mg"
+        },
+        "calcium": {
+          "value": 52.0,
+          "unit": "mg"
+        }
+      },
+      "image": "assets/food-egg.webp",
+      "source": {
+        "agency": "식품의약품안전처 K-FIND",
+        "code": "R110-003000046-0000",
+        "url": "https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R110-003000046-0000&searchRegionCd=ZZ&searchMonthCd=AVG",
+        "checked": "2026-11-08"
+      }
+    },
+    {
+      "id": "milk",
+      "name": "우유",
+      "sourceFoodName": "우유",
+      "group": "음료",
+      "ingredients": [
+        "우유"
+      ],
+      "allergens": [
+        "우유"
+      ],
+      "basis": {
+        "value": 100,
+        "unit": "g"
+      },
+      "nutrients": {
+        "energy": {
+          "value": 67.0,
+          "unit": "kcal"
+        },
+        "carbohydrate": {
+          "value": 4.86,
+          "unit": "g"
+        },
+        "protein": {
+          "value": 3.09,
+          "unit": "g"
+        },
+        "fat": {
+          "value": 3.85,
+          "unit": "g"
+        },
+        "fiber": {
+          "value": 0.0,
+          "unit": "g"
+        },
+        "sodium": {
+          "value": 40.0,
+          "unit": "mg"
+        },
+        "calcium": {
+          "value": 118.0,
+          "unit": "mg"
+        }
+      },
+      "image": "assets/food-milk.webp",
+      "source": {
+        "agency": "식품의약품안전처 K-FIND",
+        "code": "R113-009000000-0000",
+        "url": "https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R113-009000000-0000&searchRegionCd=ZZ&searchMonthCd=AVG",
+        "checked": "2026-11-08"
+      }
+    },
+    {
+      "id": "rice",
+      "name": "쌀밥",
+      "sourceFoodName": "쌀밥",
+      "group": "식사",
+      "ingredients": [
+        "쌀밥"
+      ],
+      "allergens": [],
+      "basis": {
+        "value": 100,
+        "unit": "g"
+      },
+      "nutrients": {
+        "energy": {
+          "value": 166.0,
+          "unit": "kcal"
+        },
+        "carbohydrate": {
+          "value": 37.33,
+          "unit": "g"
+        },
+        "protein": {
+          "value": 3.36,
+          "unit": "g"
+        },
+        "fat": {
+          "value": 0.32,
+          "unit": "g"
+        },
+        "fiber": {
+          "value": 0.1,
+          "unit": "g"
+        },
+        "sodium": {
+          "value": 0.0,
+          "unit": "mg"
+        },
+        "calcium": {
+          "value": 6.0,
+          "unit": "mg"
+        }
+      },
+      "image": "assets/food-rice.webp",
+      "source": {
+        "agency": "식품의약품안전처 K-FIND",
+        "code": "D301-022000000-0001",
+        "url": "https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=D301-022000000-0001&searchRegionCd=ZZ&searchMonthCd=AVG",
+        "checked": "2026-11-08"
+      }
+    }
+  ],
+  "sources": {
+    "sleep": {
+      "title": "CDC · About Sleep",
+      "url": "https://www.cdc.gov/sleep/about/index.html",
+      "checked": "2026-11-08"
+    },
+    "nutrition": {
+      "title": "식약처 K-FIND 식품영양성분 DB",
+      "url": "https://various.foodsafetykorea.go.kr/nutrient/index.do",
+      "checked": "2026-11-08"
+    }
+  },
+  "notes": {
+    "cards": "사주 풀이와 건강 운세는 수업용 창작·놀이 문구입니다. 질병·건강 상태·영양 결핍을 예측하지 않습니다.",
+    "foods": "음식 후보는 선택한 종류와 제외 설정에서 고릅니다. 사주나 타로로 체질·영양 결핍을 판단하지 않습니다.",
+    "images": "카드와 음식 그림은 AI로 생성한 예시 이미지입니다. 식품 함량이나 실제 제공량의 증거가 아닙니다."
+  }
+};if(typeof module==="object"&&module.exports)module.exports=data;else root.HealthCardData=data;})(typeof globalThis!=="undefined"?globalThis:this);

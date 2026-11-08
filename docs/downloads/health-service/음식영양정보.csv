@@ -1,0 +1,7 @@
+﻿음식,원문식품명,기준량_g,에너지_kcal,탄수화물_g,단백질_g,지방_g,식이섬유_g,나트륨_mg,칼슘_mg,식품코드,원문URL
+바나나,"바나나, 생것",100,77.0,20.0,1.11,0.2,2.2,0.0,6.0,R108-037000001-0000,https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R108-037000001-0000&searchRegionCd=ZZ&searchMonthCd=AVG
+사과,"사과, 생것",100,52.0,13.96,0.26,0.07,1.8,0.0,3.0,R108-050000001-0000,https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R108-050000001-0000&searchRegionCd=ZZ&searchMonthCd=AVG
+두부,두부,100,97.0,3.75,9.62,4.63,2.9,1.0,64.0,R121-043020300-0000,https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R121-043020300-0000&searchRegionCd=ZZ&searchMonthCd=AVG
+삶은 달걀,"달걀, 삶은것",100,145.0,1.37,13.49,8.69,0.0,128.0,52.0,R110-003000046-0000,https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R110-003000046-0000&searchRegionCd=ZZ&searchMonthCd=AVG
+우유,우유,100,67.0,4.86,3.09,3.85,0.0,40.0,118.0,R113-009000000-0000,https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=R113-009000000-0000&searchRegionCd=ZZ&searchMonthCd=AVG
+쌀밥,쌀밥,100,166.0,37.33,3.36,0.32,0.1,0.0,6.0,D301-022000000-0001,https://various.foodsafetykorea.go.kr/nutrient/general/food/detail.do?searchFoodCd=D301-022000000-0001&searchRegionCd=ZZ&searchMonthCd=AVG

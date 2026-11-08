@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>사주·타로 건강정보 챗봇</title>
+ <style>
+   [hidden] { display: none !important; }
+
+   :root {
+     --bg-color: #f8f9fa;
+     --card-bg: #ffffff;
+     --text-color: #212529;
+     --sub-text: #495057;
+     --border-color: #dee2e6;
+     --primary-color: #3b82f6;
+     --primary-hover: #2563eb;
+     --accent-color: #eff6ff;
+     --radius: 8px;
+   }
+
+   * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+   }
+
+   body {
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+     background-color: var(--bg-color);
+     color: var(--text-color);
+     line-height: 1.5;
+     padding: 20px 12px;
+   }
+
+   .container {
+     max-width: 768px;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   }
+
+   header {
+     background-color: var(--card-bg);
+     padding: 20px;
+     border-radius: var(--radius);
+     border: 1px solid var(--border-color);
+   }
+
+   header h1 {
+     font-size: 1.5rem;
+     margin-bottom: 8px;
+   }
+
+   header p {
+     font-size: 0.9rem;
+     color: var(--sub-text);
+   }
+
+   section, form#saju-form {
+     background-color: var(--card-bg);
+     padding: 20px;
+     border-radius: var(--radius);
+     border: 1px solid var(--border-color);
+   }
+
+   h2 {
+     font-size: 1.25rem;
+     margin-bottom: 12px;
+     border-bottom: 2px solid var(--accent-color);
+     padding-bottom: 6px;
+   }
+
+   h3 {
+     font-size: 1.1rem;
+     margin: 12px 0 6px 0;
+   }
+
+   /* Form Styling */
+   #saju-form {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 12px;
+     align-items: flex-end;
+   }
+
+   #saju-form label {
+     display: flex;
+     flex-direction: column;
+     font-size: 0.9rem;
+     font-weight: bold;
+     gap: 4px;
+     flex: 1 1 180px;
+   }
+
+   #saju-form input[type="date"],
+   #saju-form input[type="time"],
+   #food-group,
+   #chat-input {
+     padding: 8px 12px;
+     border: 1px solid var(--border-color);
+     border-radius: 4px;
+     font-size: 1rem;
+   }
+
+   button {
+     padding: 8px 16px;
+     font-size: 0.95rem;
+     font-weight: 600;
+     border: 1px solid var(--border-color);
+     border-radius: 4px;
+     background-color: #ffffff;
+     color: var(--text-color);
+     cursor: pointer;
+     transition: background-color 0.2s;
+   }
+
+   button:hover {
+     background-color: #e9ecef;
+   }
+
+   button[type="submit"] {
+     background-color: var(--primary-color);
+     color: #ffffff;
+     border-color: var(--primary-color);
+   }
+
+   button[type="submit"]:hover {
+     background-color: var(--primary-hover);
+   }
+
+   #error {
+     color: #dc3545;
+     font-weight: bold;
+     margin-top: 8px;
+   }
+
+   /* Saju Result Section */
+   .element-card {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 16px;
+     background-color: var(--accent-color);
+     border-radius: var(--radius);
+     margin-bottom: 16px;
+     text-align: center;
+   }
+
+   .element-card img {
+     max-width: 120px;
+     height: auto;
+     margin-bottom: 8px;
+   }
+
+   .element-card b {
+     font-size: 1.2rem;
+     color: var(--primary-color);
+   }
+
+   .pillars {
+     display: flex;
+     justify-content: space-around;
+     gap: 8px;
+     margin: 16px 0;
+     overflow-x: auto;
+   }
+
+   .pillar {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 8px;
+     background-color: #f8f9fa;
+     border: 1px solid var(--border-color);
+     border-radius: 4px;
+     min-width: 60px;
+   }
+
+   .pillar small {
+     font-size: 0.8rem;
+     color: var(--sub-text);
+   }
+
+   .pillar .hanja {
+     font-size: 1.2rem;
+     font-weight: bold;
+     margin: 4px 0;
+   }
+
+   .elements {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 8px;
+     margin: 12px 0;
+   }
+
+   .element {
+     padding: 6px 12px;
+     background-color: #f1f3f5;
+     border-radius: 20px;
+     font-size: 0.9rem;
+   }
+
+   .element b {
+     color: var(--primary-color);
+   }
+
+   #print-button {
+     margin-top: 12px;
+   }
+
+   /* Tarot Section */
+   .tarot-deck {
+     display: flex;
+     justify-content: center;
+     gap: 12px;
+     margin: 16px 0;
+     flex-wrap: wrap;
+   }
+
+   .tarot-choice {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 12px;
+     border: 1px solid var(--border-color);
+     border-radius: var(--radius);
+     background-color: #ffffff;
+     cursor: pointer;
+     min-width: 90px;
+   }
+
+   .tarot-result {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 12px;
+     padding: 16px;
+     background-color: #f8f9fa;
+     border-radius: var(--radius);
+     margin: 16px 0;
+     text-align: center;
+   }
+
+   .tarot-result img {
+     max-width: 150px;
+     height: auto;
+     border-radius: 4px;
+   }
+
+   /* Food Section */
+   fieldset {
+     border: 1px solid var(--border-color);
+     border-radius: 4px;
+     padding: 12px;
+     margin: 12px 0;
+   }
+
+   legend {
+     padding: 0 6px;
+     font-size: 0.9rem;
+     font-weight: bold;
+   }
+
+   .exclusions {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 12px;
+   }
+
+   .exclusions label {
+     display: flex;
+     align-items: center;
+     gap: 4px;
+     font-size: 0.9rem;
+     cursor: pointer;
+   }
+
+   .food-list {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+     gap: 12px;
+     margin: 16px 0;
+   }
+
+   .food-button {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 10px;
+     border: 1px solid var(--border-color);
+     border-radius: var(--radius);
+     background-color: #ffffff;
+     cursor: pointer;
+   }
+
+   .food-button img {
+     width: 64px;
+     height: 64px;
+     object-fit: cover;
+     margin-bottom: 6px;
+   }
+
+   .food-button[aria-pressed="true"] {
+     border-color: var(--primary-color);
+     background-color: var(--accent-color);
+     font-weight: bold;
+   }
+
+   .food-detail {
+     margin-top: 16px;
+     padding: 16px;
+     border: 1px solid var(--border-color);
+     border-radius: var(--radius);
+     background-color: #ffffff;
+   }
+
+   .nutrition-table {
+     width: 100%;
+     border-collapse: collapse;
+     margin: 12px 0;
+     font-size: 0.9rem;
+   }
+
+   .nutrition-table th,
+   .nutrition-table td {
+     border: 1px solid var(--border-color);
+     padding: 6px 10px;
+     text-align: left;
+   }
+
+   .nutrition-table th {
+     background-color: #f1f3f5;
+   }
+
+   .food-source, .food-note {
+     font-size: 0.8rem;
+     color: var(--sub-text);
+     margin-top: 4px;
+   }
+
+   /* Chat Section */
+   .quick-questions {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 6px;
+     margin-bottom: 12px;
+   }
+
+   .quick-questions button {
+     font-size: 0.85rem;
+     padding: 4px 10px;
+     border-radius: 16px;
+     background-color: #f1f3f5;
+   }
+
+   .chat-messages {
+     height: 250px;
+     overflow-y: auto;
+     border: 1px solid var(--border-color);
+     border-radius: 4px;
+     padding: 12px;
+     background-color: #ffffff;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     margin-bottom: 12px;
+   }
+
+   .message {
+     align-self: flex-start;
+     max-width: 85%;
+     padding: 8px 12px;
+     background-color: #f1f3f5;
+     border-radius: 8px;
+     font-size: 0.95rem;
+     word-break: break-word;
+   }
+
+   .message.user {
+     align-self: flex-end;
+     background-color: var(--primary-color);
+     color: #ffffff;
+   }
+
+   #chat-form {
+     display: flex;
+     gap: 8px;
+     align-items: center;
+   }
+
+   #chat-form label {
+     font-size: 0.9rem;
+     font-weight: bold;
+     white-space: nowrap;
+   }
+
+   #chat-input {
+     flex: 1;
+   }
+
+   footer {
+     text-align: center;
+     font-size: 0.8rem;
+     color: var(--sub-text);
+     padding: 12px;
+   }
+ </style>
+ <script src="saju-core.js" defer></script>
+ <script src="health-card-data.js" defer></script>
+ <script src="health-card-core.js" defer></script>
+ <script src="saju-ui.js" defer></script>
+</head>
+<body>
+ <div class="container">
+   <header>
+     <h1>사주·타로 건강정보 챗봇</h1>
+     <p>사주 카드와 타로를 보고 음식·영양정보와 문답을 이용합니다.</p>
+   </header>
+
+   <main>
+     <form id="saju-form">
+       <label>양력 생년월일
+         <input id="birth-date" type="date" min="2000-01-01" max="2035-12-31" required>
+       </label>
+       <label>태어난 시각
+         <input id="birth-time" type="time" required>
+       </label>
+       <button type="submit">사주 카드 보기</button>
+       <button type="button" id="sample-button">가상 예시 넣기</button>
+       <button type="reset">다시 입력</button>
+     </form>
+     <p id="error" role="alert"></p>
+
+     <section id="result" hidden>
+       <div id="element-card" class="element-card"></div>
+       <h2 id="result-title">사주 계산 결과</h2>
+       <p id="result-date"></p>
+       <div id="pillars" class="pillars"></div>
+       <p id="saju-summary"></p>
+       <div id="elements" class="elements"></div>
+       <h3 id="story-title"></h3>
+       <p id="story-text"></p>
+       <button type="button" id="print-button">결과 인쇄</button>
+     </section>
+
+     <section id="tarot-stage" hidden>
+       <h2>재미로 보는 건강 타로</h2>
+       <div id="tarot-deck" class="tarot-deck"></div>
+       <div id="tarot-result" class="tarot-result" hidden></div>
+       <button type="button" id="redraw-button">카드 다시 섞기</button>
+     </section>
+
+     <section id="food-stage" hidden>
+       <h2>음식 후보와 영양정보</h2>
+       <label for="food-group">음식 종류</label>
+       <select id="food-group">
+         <option>전체</option>
+         <option>과일</option>
+         <option>식사</option>
+         <option>음료</option>
+       </select>
+       <fieldset>
+         <legend>후보에서 뺄 음식</legend>
+         <div id="food-exclusions" class="exclusions"></div>
+       </fieldset>
+       <div id="food-list" class="food-list"></div>
+       <button type="button" id="next-food">다른 음식 보기</button>
+       <div id="food-detail" class="food-detail"></div>
+     </section>
+
+     <section id="chat-stage" hidden>
+       <h2>건강정보 문답</h2>
+       <div id="quick-questions" class="quick-questions"></div>
+       <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+       <form id="chat-form">
+         <label for="chat-input">질문</label>
+         <input id="chat-input" maxlength="500">
+         <button type="submit">보내기</button>
+       </form>
+     </section>
+   </main>
+
+   <footer>
+     <p>※ 사주 및 타로 카드 운세는 재미용이며, 질병 예방이나 치료 목적의 건강 판단 기준이 아닙니다.</p>
+     <p>※ 영양정보는 식약처 데이터(100g 기준) 기반이며, 섭취 전 실제 제품의 원재료 및 알레르기 표시를 확인하세요.</p>
+     <p>※ 이미지 및 카드 요소는 AI 생성 예시이며, 본 문답창은 미리 준비된 내부 정보 DB를 조회해 답변을 제공합니다.</p>
+   </footer>
+ </div>
+</body>
+</html>
