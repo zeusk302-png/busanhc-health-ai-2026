@@ -6,3 +6,5 @@
 
 /* Functional headings and readable paragraph wrapping. */
 h1{font-weight:700;font-size:clamp(30px,3.5vw,44px)}.hero h1{font-weight:700;font-size:clamp(32px,3.5vw,44px)}.lead{word-break:keep-all;overflow-wrap:break-word}
+
+.course-overview{padding:5px 0 8px}.course-overview h1{font-size:34px;margin-bottom:14px}.course-overview .lead{font-size:16px;margin-bottom:22px}
