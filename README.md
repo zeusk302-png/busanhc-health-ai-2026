@@ -1,6 +1,8 @@
 # 부산보건고 · 보건간호과 AI 수업
 
-1교시 의료 AI 활용·건강정보 확인 → 2교시 제공 계산 자료로 로컬 웹서비스 제작 → 3교시 친구 테스트·한 번 수정·파일 전달.
+1교시 간호 AI 사례 설명40분·건강정보 확인10분 → 2교시 제공 계산 자료로 로컬 웹서비스 제작 → 3교시 친구 테스트·한 번 수정·파일 전달.
+
+1교시는 부산 동아대병원 사례로 시작해 간호기록,낙상·욕창 위험 예측,환자 악화 알림,물품 운반 로봇,병원 지침 검색을 설명합니다. 각 사례의 업무 흐름 도식과 공식 자료 링크를 제공하며,제품 기능·도입 발표·과거 보고서의 시점을 구분합니다. 카메라·학생 계정·학생별 활동 없이 강사가 설명할 수 있습니다.
 
 수업 페이지: https://zeusk302-png.github.io/busanhc-health-ai-2026/
 
@@ -12,4 +14,5 @@
 
 GitHub Pages는 main 브랜치 /docs를 게시합니다. 별도 빌드가 없습니다.
 원본 프로젝트 scripts/build-health-service.py, scripts/build-health-pages.py로 건강 과정만 재생성합니다. 전체 과정 배포용 scripts/build-github-pages.py도 새 자료를 보존합니다.
+간호 사례 원본은 health-service/nursing-cases.json입니다. build-health-pages.py는 build-health-nursing-lesson.py를 먼저 실행해 사례·시간표·CSS/JS 버전을 갱신합니다.
 이전 챗봇 교재는 chatbot.html에 보존합니다. 연구·강사 검증 기록은 공개하지 않습니다.
